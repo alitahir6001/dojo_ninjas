@@ -4,8 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>dojo and ninjas shell mfer</title>
+    {% load static %}
+	<link rel="stylesheet" href="{% static 'style.css' %}">
+
+
 </head>
 <body>
-    <h1>Welcome to the thunderdome bitch</h1>
+    <div id="container">
+        <div class="inputbox">
+            <h1>Add a Dojo</h1>
+            Name: <input type='text' name='dojoname'><br><br>
+            City: <input type='text' name="cityname"><br><br>
+            State: <input type='text' name="statename"><br><br>
+            <button type='submit'>Add A Dojo</button>
+        </div>
+    
+        <div class="inputbox">
+            <h1>Add a Ninja</h1>
+            First Name: <input type='text' name='ninjafirstname'><br><br>
+            Last Name: <input type='text' name="ninjalastname"><br><br>
+            Dojo: <input type='text' name="dojoname"><br><br>  <!--Turn this input field into a dropdown list-->
+            <button type='submit'>Add A Ninja</button>
+        </div>
+    
+    <!-- Be sure to add in the {% for loops%} like from the lecture videos to iterate through all the database entries.  Watch that video on Thursday's Render Template-->
+    
+    
+    
+    
+    </div>
+
+
 </body>
 </html>

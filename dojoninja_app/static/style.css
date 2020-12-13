@@ -1,0 +1,9 @@
+h1 {
+    color: blue;
+}
+
+.inputbox {
+    border: 2px solid red;
+    display: inline-block;
+    /* Or try displaying as flex to get the input boxes to be next to each other. */
+}
