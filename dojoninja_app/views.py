@@ -1,20 +1,24 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, HttpResponse
+from .models import Dojos, Ninjas
 
 # Create your views here.
 
 def index(request):
-    # context = {
-    # "all_the_dojos": Dojos.objects.all(),
-    # "all_the_ninjas": Ninjas.objects.all()
-    # }
-    return render(request, 'index.html')  # dont forget to add context
+    context = {
+    "all_dojos": Dojos.objects.all(),
+    
+    }
+    return render(request, 'index.html', context)  # dont forget to add context
+
+# here are the function to get form data to save to the database.
 
 def createdojo(request):
-    if request.method == "POST":
-        dojos = Dojos()
-        dojos.name = request.Post.get("dojoname")  # be sure to add an input in the form with this matching name
-        dojos.city = request.Post.get("cityname")  # be sure to add an input in the form with this matching name
-        dojos.state = request.Post.get("statename")  # be sure to add an input in the form with this matching name
+    Dojos.objects.create(name=request.POST["name"],city=request.POST["city"],state=request.POST['state'])
+    return redirect("/")
 
 def createninjas(request):
-    pass
+        this_dojo = Dojos.objects.all().get(id=request.POST["dojoname"])
+        new_ninja = Ninjas.objects.create(first_name=request.POST["ninjafirstname"], last_name=request.POST["ninjalastname"], dojo=this_dojo)
+        this_dojo.ninjas_owned.add(new_ninja)
+        
+        return redirect("/")
